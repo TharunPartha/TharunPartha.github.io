@@ -757,3 +757,30 @@ font-size:28px;
 }
 
 }
+/* ============================
+   SCROLL ANIMATION
+============================ */
+
+.hidden{
+
+    opacity:0;
+
+    transform:translateY(70px);
+
+    transition:all 1s ease;
+
+}
+
+.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+nav a.active{
+
+    color:#D4AF37;
+
+}
