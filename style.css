@@ -112,8 +112,8 @@ nav ul li a:hover{
 }
 
 .hero-image img{
-    width:340px;
-    height:440px;
+    width:260px;
+    height:340px;
     object-fit:cover;
     border-radius:20px;
     border:3px solid #D4AF37;
