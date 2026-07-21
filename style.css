@@ -228,3 +228,46 @@ gap:20px;
 }
 
 }
+/* ===========================
+   ABOUT
+=========================== */
+
+.about{
+
+padding:120px 10%;
+
+background:#111;
+
+text-align:center;
+
+}
+
+.container{
+
+max-width:900px;
+
+margin:auto;
+
+}
+
+.about h2{
+
+font-size:60px;
+
+font-family:'Cormorant Garamond',serif;
+
+color:#D4AF37;
+
+margin-bottom:35px;
+
+}
+
+.about p{
+
+font-size:22px;
+
+line-height:1.9;
+
+color:#d0d0d0;
+
+}
