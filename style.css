@@ -818,3 +818,241 @@ transform:translateY(-20px) scale(1.05);
 box-shadow:0 25px 40px rgba(212,175,55,.35);
 
 }
+/* ==========================================
+   PREMIUM BACKGROUND
+========================================== */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle at top right, rgba(212,175,55,.06), transparent 35%),
+        radial-gradient(circle at bottom left, rgba(212,175,55,.04), transparent 40%);
+    pointer-events:none;
+    z-index:-1;
+}
+
+/* ==========================================
+   SECTION REVEAL
+========================================== */
+
+.hidden{
+    opacity:0;
+    transform:translateY(70px);
+    transition:1s ease;
+}
+
+.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* ==========================================
+   BUTTON GLOW
+========================================== */
+
+.primary-btn,
+.buy-btn,
+.popup-btn{
+
+position:relative;
+overflow:hidden;
+
+}
+
+.primary-btn::before,
+.buy-btn::before,
+.popup-btn::before{
+
+content:"";
+position:absolute;
+top:0;
+left:-120%;
+width:100%;
+height:100%;
+background:linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.45),
+transparent
+);
+
+transition:.8s;
+
+}
+
+.primary-btn:hover::before,
+.buy-btn:hover::before,
+.popup-btn:hover::before{
+
+left:120%;
+
+}
+
+/* ==========================================
+   GOLD LINE ANIMATION
+========================================== */
+
+.gold-line{
+
+position:relative;
+overflow:hidden;
+
+}
+
+.gold-line::after{
+
+content:"";
+position:absolute;
+top:0;
+left:-100%;
+width:100%;
+height:100%;
+background:white;
+opacity:.3;
+animation:goldLine 5s infinite;
+
+}
+
+@keyframes goldLine{
+
+100%{
+
+left:120%;
+
+}
+
+}
+
+/* ==========================================
+   BOOK CARD SHINE
+========================================== */
+
+.book-card{
+
+overflow:hidden;
+
+}
+
+.book-card::after{
+
+content:"";
+position:absolute;
+
+top:-50%;
+left:-120%;
+
+width:60%;
+height:220%;
+
+background:rgba(255,255,255,.08);
+
+transform:rotate(25deg);
+
+transition:1s;
+
+}
+
+.book-card:hover::after{
+
+left:170%;
+
+}
+
+/* ==========================================
+   HERO IMAGE
+========================================== */
+
+.image-border{
+
+transition:.5s;
+
+}
+
+.image-border:hover{
+
+box-shadow:
+0 0 30px rgba(212,175,55,.35),
+0 0 80px rgba(212,175,55,.15);
+
+transform:translateY(-8px);
+
+}
+
+/* ==========================================
+   COMING SOON
+========================================== */
+
+.coming-placeholder{
+
+transition:.5s;
+
+}
+
+.coming-placeholder:hover{
+
+transform:scale(1.05);
+box-shadow:0 0 30px rgba(212,175,55,.25);
+
+}
+
+/* ==========================================
+   CONTACT
+========================================== */
+
+.contact-card{
+
+position:relative;
+overflow:hidden;
+
+}
+
+.contact-card::before{
+
+content:"";
+position:absolute;
+
+top:-100%;
+left:0;
+
+width:100%;
+height:100%;
+
+background:linear-gradient(
+transparent,
+rgba(212,175,55,.08),
+transparent
+);
+
+transition:.8s;
+
+}
+
+.contact-card:hover::before{
+
+top:100%;
+
+}
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+footer{
+
+background:#080808;
+
+}
+
+footer h2{
+
+transition:.4s;
+
+}
+
+footer h2:hover{
+
+color:var(--gold);
+
+}
