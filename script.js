@@ -192,3 +192,18 @@ document.addEventListener("mousemove",(e)=>{
     #0b0b0b 45%)`;
 
 });
+/* ==========================================
+BOOKSHELF
+========================================== */
+
+document.querySelectorAll(".book-spine").forEach(book=>{
+
+book.addEventListener("click",()=>{
+
+alert(
+"This recommendation panel will become an animated book card in Version 3."
+);
+
+});
+
+});
