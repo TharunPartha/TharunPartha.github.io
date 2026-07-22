@@ -1,24 +1,113 @@
-// ================================
-// Smooth Scroll Active Navigation
-// ================================
+/* ==========================================
+   INTRO ANIMATION
+========================================== */
 
-const navLinks = document.querySelectorAll("nav a");
+window.addEventListener("load", () => {
+    document.body.style.overflow = "hidden";
 
-navLinks.forEach(link => {
+    setTimeout(() => {
+        document.body.style.overflow = "auto";
+    }, 3000);
+});
 
-    link.addEventListener("click", function(){
+/* ==========================================
+   BOOK LINKS
+========================================== */
 
-        navLinks.forEach(item=>item.classList.remove("active"));
+const books = {
 
-        this.classList.add("active");
+    rebloomed: {
+        amazon: "https://www.amazon.in/REBLOOMED-LOVE-Love-never-ended/dp/B0DPMJGRWZ",
+        flipkart: "https://www.flipkart.com/rebloomed-love-never-ended/p/itm62ac9d2bfa3ac"
+    },
+
+    broken: {
+        amazon: "https://www.amazon.in/Broken-Red-Cord-Tharun-K/dp/B0FDBK2KVG",
+        flipkart: "https://www.flipkart.com/broken-red-cord/p/itm71e8e6001e0c1"
+    }
+
+};
+
+/* ==========================================
+   POPUP
+========================================== */
+
+const popup = document.getElementById("buyPopup");
+
+const amazonBtn = document.getElementById("amazonLink");
+const flipkartBtn = document.getElementById("flipkartLink");
+
+const closeBtn = document.querySelector(".close-popup");
+
+const buyButtons = document.querySelectorAll(".buy-btn");
+
+buyButtons.forEach((button, index) => {
+
+    button.addEventListener("click", () => {
+
+        popup.style.display = "flex";
+
+        if(index === 0){
+
+            amazonBtn.href = books.rebloomed.amazon;
+            flipkartBtn.href = books.rebloomed.flipkart;
+
+        }
+
+        else{
+
+            amazonBtn.href = books.broken.amazon;
+            flipkartBtn.href = books.broken.flipkart;
+
+        }
 
     });
 
 });
 
-// ================================
-// Scroll Reveal Animation
-// ================================
+closeBtn.addEventListener("click", () => {
+
+    popup.style.display = "none";
+
+});
+
+window.addEventListener("click", (e)=>{
+
+    if(e.target===popup){
+
+        popup.style.display="none";
+
+    }
+
+});
+
+/* ==========================================
+   NAVBAR SHADOW
+========================================== */
+
+const header = document.querySelector("header");
+
+window.addEventListener("scroll", ()=>{
+
+    if(window.scrollY > 40){
+
+        header.style.background="rgba(0,0,0,.85)";
+        header.style.boxShadow="0 15px 35px rgba(0,0,0,.35)";
+
+    }
+
+    else{
+
+        header.style.background="rgba(0,0,0,.45)";
+        header.style.boxShadow="none";
+
+    }
+
+});
+
+/* ==========================================
+   FADE IN ON SCROLL
+========================================== */
 
 const observer = new IntersectionObserver((entries)=>{
 
@@ -33,7 +122,7 @@ const observer = new IntersectionObserver((entries)=>{
     });
 
 },{
-    threshold:0.15
+    threshold:.15
 });
 
 document.querySelectorAll("section").forEach(section=>{
@@ -44,68 +133,62 @@ document.querySelectorAll("section").forEach(section=>{
 
 });
 
-// ================================
-// Floating Hero Image
-// ================================
+/* ==========================================
+   FOOTER ANIMATION
+========================================== */
 
-const heroImage = document.querySelector(".hero-image img");
+const ending = document.getElementById("endingText");
 
-let direction = 1;
+const footerObserver = new IntersectionObserver((entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+            setTimeout(()=>{
+
+                ending.innerHTML="The Beginning.";
+
+            },2000);
+
+        }
+
+    });
+
+},{
+    threshold:.8
+});
+
+footerObserver.observe(document.querySelector("footer"));
+
+/* ==========================================
+   HERO IMAGE FLOAT
+========================================== */
+
+const heroImage=document.querySelector(".image-border");
+
+let direction=1;
 
 setInterval(()=>{
 
-    if(direction===1){
-
-        heroImage.style.transform="translateY(-12px)";
-
-    }else{
-
-        heroImage.style.transform="translateY(0px)";
-
-    }
+    heroImage.style.transform=`translateY(${direction*8}px)`;
 
     direction*=-1;
 
-},2200);
+},1800);
 
-// ================================
-// Navbar Background on Scroll
-// ================================
+/* ==========================================
+   GOLD GLOW ON MOUSE
+========================================== */
 
-window.addEventListener("scroll",()=>{
+document.addEventListener("mousemove",(e)=>{
 
-    const header=document.querySelector("header");
+    const x=e.clientX/window.innerWidth*100;
+    const y=e.clientY/window.innerHeight*100;
 
-    if(window.scrollY>80){
-
-        header.style.background="rgba(0,0,0,.93)";
-        header.style.boxShadow="0 10px 30px rgba(0,0,0,.45)";
-
-    }else{
-
-        header.style.background="rgba(0,0,0,.75)";
-        header.style.boxShadow="none";
-
-    }
-
-});
-
-// ================================
-// Book Card Hover Glow
-// ================================
-
-document.querySelectorAll(".book-card").forEach(card=>{
-
-    card.addEventListener("mouseenter",()=>{
-
-        card.style.boxShadow="0 25px 70px rgba(212,175,55,.25)";
-
-    });
-
-    card.addEventListener("mouseleave",()=>{
-
-        card.style.boxShadow="";
-
-    });
+    document.body.style.background=
+    `radial-gradient(circle at ${x}% ${y}%,
+    rgba(212,175,55,.05),
+    #0b0b0b 45%)`;
 
 });
