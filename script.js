@@ -207,3 +207,181 @@ alert(
 });
 
 });
+/* ==========================================
+   SMOOTH SCROLL ACTIVE NAV
+========================================== */
+
+const navLinks = document.querySelectorAll("nav a");
+
+window.addEventListener("scroll", () => {
+
+    let current = "";
+
+    document.querySelectorAll("section").forEach(section => {
+
+        const top = section.offsetTop - 120;
+
+        if (window.scrollY >= top) {
+            current = section.getAttribute("id");
+        }
+
+    });
+
+    navLinks.forEach(link => {
+
+        link.classList.remove("active");
+
+        if (link.getAttribute("href") === "#" + current) {
+
+            link.classList.add("active");
+
+        }
+
+    });
+
+});
+
+
+/* ==========================================
+   BUTTON RIPPLE EFFECT
+========================================== */
+
+document.querySelectorAll(".buy-btn,.primary-btn,.secondary-btn").forEach(button => {
+
+    button.addEventListener("click", function(e){
+
+        const circle = document.createElement("span");
+
+        const size = Math.max(this.clientWidth,this.clientHeight);
+
+        circle.style.width = size + "px";
+        circle.style.height = size + "px";
+
+        circle.style.left = (e.offsetX-size/2)+"px";
+        circle.style.top = (e.offsetY-size/2)+"px";
+
+        circle.classList.add("ripple");
+
+        this.appendChild(circle);
+
+        setTimeout(()=>{
+
+            circle.remove();
+
+        },700);
+
+    });
+
+});
+
+
+/* ==========================================
+   PARALLAX HERO IMAGE
+========================================== */
+
+window.addEventListener("mousemove",(e)=>{
+
+    const img=document.querySelector(".image-border");
+
+    if(!img) return;
+
+    let x=(window.innerWidth/2-e.clientX)/45;
+    let y=(window.innerHeight/2-e.clientY)/45;
+
+    img.style.transform=`translate(${x}px,${y}px)`;
+
+});
+
+
+/* ==========================================
+   RANDOM QUOTES
+========================================== */
+
+const quotes=[
+
+"Stories That Stay With You.",
+
+"Every ending hides another beginning.",
+
+"Some pages are impossible to forget.",
+
+"Books preserve emotions that words alone cannot."
+
+];
+
+const heroSmall=document.querySelector(".hero-small");
+
+if(heroSmall){
+
+let i=0;
+
+setInterval(()=>{
+
+i=(i+1)%quotes.length;
+
+heroSmall.style.opacity=0;
+
+setTimeout(()=>{
+
+heroSmall.innerHTML=quotes[i];
+
+heroSmall.style.opacity=1;
+
+},300);
+
+},4500);
+
+}
+
+
+/* ==========================================
+   SCROLL TO TOP
+========================================== */
+
+const topBtn=document.createElement("div");
+
+topBtn.innerHTML="↑";
+
+topBtn.id="topButton";
+
+document.body.appendChild(topBtn);
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>500){
+
+topButton.style.opacity="1";
+topButton.style.pointerEvents="auto";
+
+}else{
+
+topButton.style.opacity="0";
+topButton.style.pointerEvents="none";
+
+}
+
+});
+
+topButton.onclick=()=>{
+
+window.scrollTo({
+
+top:0,
+behavior:"smooth"
+
+});
+
+};
+
+
+/* ==========================================
+   YEAR
+========================================== */
+
+const year=document.querySelector(".copyright");
+
+if(year){
+
+year.innerHTML=`© ${new Date().getFullYear()} Tharun K • All Rights Reserved`;
+
+}
